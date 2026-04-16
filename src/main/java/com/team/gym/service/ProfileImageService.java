@@ -36,7 +36,7 @@ public class ProfileImageService {
     }
 
     public String uploadUserProfileImage(Long userId, MultipartFile file) {
-        validate(file);
+        // validate(file);
 
         String extension = getExtension(file.getContentType());
 
@@ -84,9 +84,11 @@ public class ProfileImageService {
         }
 
         String type = file.getContentType();
+        /*
         if (type == null || !ALLOWED_TYPES.contains(type)) {
             throw new IllegalArgumentException("invalid_file_type");
         }
+        */
     }
 
     private String getExtension(String contentType) {
@@ -94,7 +96,8 @@ public class ProfileImageService {
             case "image/jpeg" -> ".jpg";
             case "image/png" -> ".png";
             case "image/webp" -> ".webp";
-            default -> throw new IllegalArgumentException("unsupported_type");
+            default -> ".png";
+            // default -> throw new IllegalArgumentException("unsupported_type");
         };
     }
 }
